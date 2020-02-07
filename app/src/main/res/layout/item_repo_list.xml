@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="itemData"
+            type="com.tds.githubtrending.model.Item" />
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/itemAvatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@{itemData.full_name}"
+            android:layout_marginStart="20dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/item_fork_count"
+            android:text="@{itemData.forks_count+``}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            />
+
+        <TextView
+            android:id="@+id/item_star_count"
+            android:text="@{itemData.stargazers_count+``}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/item_issues_count"
+            android:text="@{itemData.open_issues_count+` issues`}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+</layout>

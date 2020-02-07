@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.repolist.RepoListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.tds.githubtrending.ui.repolist.RepoListViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.repolist.RepoListFragment">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRepoList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{safeUnbox(viewmodel.dataLoading)? View.GONE : View.VISIBLE}"
+            />
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewmodel.dataLoading)? View.VISIBLE : View.GONE}"
+            />
+
+        <TextView
+            android:text="No Repository to show"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewmodel.empty)? View.VISIBLE : View.GONE}"
+            />
+    </RelativeLayout>
+
+</layout>

@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -20,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding{
+        enabled = true
     }
 }
 
@@ -44,4 +50,10 @@ dependencies {
 
     //viewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
+    //Databinding compiler
+    kapt 'com.android.databinding:compiler:3.1.4'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
